@@ -10,17 +10,22 @@
 <header th:insert="blocks/header :: header"></header>
 
 <div class="jumbotron">
+    <div th:each="img : ${images}">
+                <img th:src="@{/images/1002}" alt="img" class="img-thumbnail" height="80px"/>
+<!--        <img th:src="@{'/images/' + ${img.id}}" alt="img" class="img-thumbnail" height="80pxa"/>-->
+    </div>
     <h1 th:text="${post.title}" class="display-4"></h1>
     <p th:text="${post.title}" class="lead"></p>
     <hr class="my-4">
     <p class="lead">
-        <button type="submit" class="btn btn-primary">Загрузить видео</button>
+        <button type="submit" class="btn btn-primary">Загрузить изображение в модель</button>
     </p>
     <a href="/">
         <button type="button" class="btn btn-secondary">Назад</button>
     </a><br>
-    <form th:action="@{'/post/delete/{id}' (id=${post.id})}" th:method="post" >
-        <br><button type="submit" class="btn btn-secondary">Удалить</button>
+    <form th:action="@{'/post/delete/{id}' (id=${post.id})}" th:method="post">
+        <br>
+        <button type="submit" class="btn btn-secondary">Удалить</button>
     </form>
 </div>
 

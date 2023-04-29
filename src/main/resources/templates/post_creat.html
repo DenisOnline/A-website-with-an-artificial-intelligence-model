@@ -9,11 +9,15 @@
 <body>
 <header th:insert="blocks/header :: header"></header>
 
-<form action="/post/create" method="post">
-    <input class="form-control" type="text" placeholder="Название модели" name="title"><br>
-    <input class="form-control" type="text" placeholder="Описание" name="description"><br>
-    <button type="submit" class="btn btn-primary">Добавить</button>
-</form>
+<div>
+    <form action="/post/creat" method="POST" enctype="multipart/form-data">
+        <input class="form-control" type="text" placeholder="Название модели" name="title"><br>
+        <input class="form-control" type="text" placeholder="Описание" name="description"><br>
+        Загрузить файл<input type="file" name="file">
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+</div>
+
 
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
