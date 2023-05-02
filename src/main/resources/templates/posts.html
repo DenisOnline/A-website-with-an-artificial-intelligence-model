@@ -12,9 +12,10 @@
 <div class="album py-5 bg-body-tertiary">
     <div class="container mt-5">
         <div class="container mt-5">
-
+            <div th:each="img : ${images}">
+                <img th:src="@{'/images/post/' + ${img.id}}" alt="img" height="180px"/>
+            </div>
             <div th:each="post : ${posts}" class="alert alert-info mt-2">
-<!--                <img th:src="'/images/' + ${post.id}" alt="img" class="img-thumbnail" height="80px"/>-->
                 <h3 th:text="${post.title}"/>
                 <p th:text="${post.description}"/>
                 <a th:href="'/post/' + ${post.id}" class="btn btn-warning">Детальнее</a>

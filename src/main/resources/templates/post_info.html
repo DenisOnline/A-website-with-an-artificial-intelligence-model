@@ -11,11 +11,9 @@
 
 <div class="jumbotron">
     <div th:each="img : ${images}">
-                <img th:src="@{/images/1002}" alt="img" class="img-thumbnail" height="80px"/>
-<!--        <img th:src="@{'/images/' + ${img.id}}" alt="img" class="img-thumbnail" height="80pxa"/>-->
-    </div>
+        <img th:src="@{'/images/post/' + ${img.id}}" alt="img" height="180px"/>
     <h1 th:text="${post.title}" class="display-4"></h1>
-    <p th:text="${post.title}" class="lead"></p>
+    <p th:text="${post.description}" class="lead"></p>
     <hr class="my-4">
     <p class="lead">
         <button type="submit" class="btn btn-primary">Загрузить изображение в модель</button>

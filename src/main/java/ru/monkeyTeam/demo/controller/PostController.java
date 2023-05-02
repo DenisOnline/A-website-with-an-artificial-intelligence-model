@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.monkeyTeam.demo.models.Image;
+import ru.monkeyTeam.demo.models.ImageDto;
 import ru.monkeyTeam.demo.models.Post;
 import ru.monkeyTeam.demo.services.PostService;
 
@@ -45,7 +46,7 @@ public class PostController {
     @GetMapping("post/{id}")
     public String postInfo(@PathVariable Long id, Model model) {
         Post post = postService.getPostById(id);
-        List<Image> images = post.getImages();
+        List<ImageDto> images = postService.listImagesDtos(post);
         model.addAttribute("post", post);
         model.addAttribute("images", images);
         return "post_info";

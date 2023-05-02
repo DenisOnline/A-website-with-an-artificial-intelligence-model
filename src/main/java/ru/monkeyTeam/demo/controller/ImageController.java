@@ -16,7 +16,7 @@ import java.io.ByteArrayInputStream;
 @RequiredArgsConstructor
 public class ImageController {
     private final ImageRepository imageRepository;
-    @GetMapping("/images/{id}")
+    @GetMapping("/images/post/{id}")
     private ResponseEntity<?> getImageById(@PathVariable Long id) {
         Image image = imageRepository.findById(id).orElse(null);
         return ResponseEntity.ok()
@@ -25,5 +25,4 @@ public class ImageController {
                 .contentLength(Long.parseLong(image.getSize()))
                 .body(new InputStreamResource(new ByteArrayInputStream(image.getBytes())));
     }
-
 }

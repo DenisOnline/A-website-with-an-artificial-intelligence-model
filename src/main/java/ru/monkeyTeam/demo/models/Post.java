@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -20,8 +19,6 @@ public class Post {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-//    @Column(name = "imageId")
-//    private Long imageId;
     @Column(name = "title")
     private String title;
     @Column(name = "description", columnDefinition = "text")
@@ -36,9 +33,5 @@ public class Post {
     public void addImageToPost(Image image) {
         image.setPost(this);
         images.add(image);
-    }
-
-    public List<Image> getImages(){
-        return images;
     }
 }

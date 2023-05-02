@@ -25,7 +25,6 @@ public class Image {
     @Column(name = "contentType")
     private String contentType;
     @Lob
-//    @Type(type = "org.hibernate.type.ImageType")
     private byte[] bytes;
     @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn(name = "post_id")

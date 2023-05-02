@@ -1,15 +1,18 @@
 package ru.monkeyTeam.demo.services;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import ru.monkeyTeam.demo.models.Image;
+import ru.monkeyTeam.demo.models.ImageDto;
 import ru.monkeyTeam.demo.models.Post;
+import ru.monkeyTeam.demo.repositories.ImageRepository;
 import ru.monkeyTeam.demo.repositories.PostRepository;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostService {
     private final PostRepository postRepository;
+    private final ImageRepository imageRepository;
 
     public List<Post> listPost(String title) {
         if (title != null) {
@@ -46,5 +50,10 @@ public class PostService {
 
     public Post getPostById(Long id) {
         return postRepository.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public List<ImageDto> listImagesDtos(Post post) {
+        return imageRepository.findAllByPost(post).stream().map(i -> new ImageDto(i.getId())).toList();
     }
 }
